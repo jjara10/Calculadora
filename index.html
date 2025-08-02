@@ -4,90 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Calculadora</title>
+  <script src="calculadora.js"></script>
 </head>
 
 <body>
   <h2>Calcular</h2>
   <button onclick="iniciarCalculadora()">Iniciar Calculadora</button>
   <p id="resultado"></p>
-
-  <script>
-    // Paso 1: Declaración de variables globales
-    let num1 = 0;
-    let num2 = 0;
-    let operacion = "";
-
-    // Paso 2: Función que realiza la operación
-    function realizarOperacion(num1, num2, operacion) {
-      // Paso 3: Realizar validaciones de datos y operaciones
-      if (operacion === "s") {
-        return num1 + num2;
-      } else if (operacion === "r") {
-        return num1 - num2;
-      } else if (operacion === "m") {
-        return num1 * num2;
-      } else if (operacion === "d") {
-        if (num2 === 0) {
-          return "Error: No se puede dividir por 0";
-        }
-        return num1 / num2;
-      } else {
-        return "Operación no válida.";
-      }
-    }
-
-    // Paso 4: Bucle que repite hasta que el usuario quiera salir
-    function iniciarCalculadora() {
-      let seguir = true;
-      let resultadoTexto = "";
-
-      while (seguir) {
-        // Solicitar los datos al usuario
-        let entrada1 = prompt("Ingrese el primer número:");
-        if (entrada1 === '') {
-          alert("Dato 1 no ingresado")
-          break;
-        }
-        if (entrada1 === null) {
-          alert("Gracias por usar la calculadora. ¡Hasta pronto!");
-          break;
-        }
-        num1 = parseFloat(entrada1);
-
-        let entrada2 = prompt("Ingrese el segundo número:");
-        if (entrada2 === '') {
-          alert("Dato 2 no ingresado")
-          break;
-        }
-        if (entrada2 === null) {
-          alert("Gracias por usar la calculadora. ¡Hasta pronto!");
-          break;
-        }
-        num2 = parseFloat(entrada2);
-
-        operacion = prompt("Ingrese la operación: \ns = Suma \nr = Resta \nm = Multiplicacion \nd = Division \nsalir = terminar:");
-        // Paso 5: Validar si desea salir
-        if (operacion === null || operacion.toLowerCase() === "salir") {
-          seguir = false;
-          alert("Gracias por usar la calculadora. ¡Hasta pronto!");
-          document.getElementById("resultado").innerText = "Sesión finalizada.";
-          break;
-        }
-
-        // Validación y ejecución
-        let resultado = realizarOperacion(num1, num2, operacion.toLowerCase());
-        alert("Resultado: " + resultado);
-
-        // Preguntar si desea continuar
-        let continuar = confirm("¿Deseas realizar otra operación?");
-        if (!continuar) {
-          seguir = false;
-          alert("Gracias por usar la calculadora. ¡Hasta pronto!");
-          document.getElementById("resultado").innerText = "\nSesión finalizada.";
-        }
-      }
-    }
-  </script>
 </body>
 
 </html>
